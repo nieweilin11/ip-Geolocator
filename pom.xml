@@ -21,6 +21,12 @@
         <maven.compiler.release>11</maven.compiler.release>
         <mainClass>geolocator.Main</mainClass>
     </properties>
+    <distributionManagement>
+        <site>
+            <id>shrek</id>
+            <url>scp://daociyiyou@shrek.unideb.hu:2222/home/daociyiyou/public_html/${project.artifactId}</url>
+        </site>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -31,7 +37,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <version>31.1-jre</version>
         </dependency>
 
         <dependency>
@@ -40,9 +46,6 @@
             <version>11.8</version>
             <scope>compile</scope>
         </dependency>
-
-
-
      <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -61,6 +64,18 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.11.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                        <version>3.5.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
